@@ -22,15 +22,18 @@ int partition(int *arr, int low, int high, size_t size)
 		if (arr[j] < pivot)
 		{
 			i++;
-			swap(arr, i, j);
 			if (i != j)
+			{
+				swap(arr, i, j);
 				print_array(arr, size);
+			}
 		}
 	}
-
-	swap(arr, high, i + 1);
 	if (high != i + 1)
+	{
+		swap(arr, high, i + 1);
 		print_array(arr, size);
+	}
 	return (i + 1);
 }
 
