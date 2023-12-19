@@ -6,10 +6,11 @@
  * @arr: array to partition
  * @low: beggining of the array
  * @high: end of the array
+ * @size: size
  * Return: returns the nwes index oh the value
  */
 
-int partition(int *arr, int low, int high)
+int partition(int *arr, int low, int high, size_t size)
 {
 	int j, i;
 	int pivot = arr[high];
@@ -24,7 +25,8 @@ int partition(int *arr, int low, int high)
 			swap(arr, i, j);
 		}
 	}
-	swap(arr, i + 1, high);
+	swap(arr, high, i + 1);
+	print_array(arr, size);
 	return (i + 1);
 }
 
@@ -61,10 +63,9 @@ void quick_sorting(int *array, size_t size, int low, int high)
 
 	if (low < high)
 	{
-		pi = partition(array, low, high);
-		print_array(array, size);
+		pi = partition(array, low, high, size);
 		quick_sorting(array, size, low, pi - 1);
-		quick_sorting(array, size, pi + 1, size);
+		quick_sorting(array, size, pi + 1, high);
 	}
 
 
@@ -80,7 +81,7 @@ void quick_sorting(int *array, size_t size, int low, int high)
 
 void quick_sort(int *array, size_t size)
 {
-	if (!array || size == 0)
+	if (!array || size < 2)
 		return;
 	quick_sorting(array, size, 0, size - 1);
 }
