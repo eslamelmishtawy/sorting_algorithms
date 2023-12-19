@@ -17,16 +17,20 @@ int partition(int *arr, int low, int high, size_t size)
 
 	i = low - 1;
 
-	for (j = low; j <= high; j++)
+	for (j = low; j < high; j++)
 	{
 		if (arr[j] < pivot)
 		{
 			i++;
 			swap(arr, i, j);
+			if (i != j)
+				print_array(arr, size);
 		}
 	}
+
 	swap(arr, high, i + 1);
-	print_array(arr, size);
+	if (high != i + 1)
+		print_array(arr, size);
 	return (i + 1);
 }
 
