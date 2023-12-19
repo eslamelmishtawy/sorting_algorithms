@@ -21,4 +21,8 @@ void selection_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void bubble_sort(int *array, size_t size);
 void print_array(const int *array, size_t size);
+void swap(int *arr, int i, int j);
+int partition(int *arr, int low, int high);
+void quick_sort(int *array, size_t size);
+void quick_sorting(int *array, size_t size, int low, int high);
 #endif
